@@ -17,7 +17,7 @@ head(iris)
 
 myiris <- iris
 
-#data, aesthetics, geometry, stats (terminology used in the XXX library)
+#data, aesthetics, geometry, stats, facets [e.g., multiple panels in same figure by species] (terminology used in the XXX library)
 
 myplot <- ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width))
 myplot + geom_point()
@@ -44,6 +44,16 @@ ggplot(data = d2, aes(carat, price, color = color)) +
 
 library(MASS)
 ggplot(birthwt, aes(factor(race),bwt)) + geom_boxplot()
+
+# ?? myplot <- ggplot
+# ?? summary(myplot)
+
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+  geom_point(size = 3) +
+  facet_grid(Species ~ .)
+
+
+
 
 
 
