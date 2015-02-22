@@ -17,7 +17,7 @@ head(iris)
 
 myiris <- iris
 
-#data, aesthetics, geometry, stats, facets [e.g., multiple panels in same figure by species] (terminology used in the XXX library)
+#data, aesthetics, geometry, stats, facets, scales [e.g., multiple panels in same figure by species] (terminology used in the XXX library)
 
 myplot <- ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width))
 myplot + geom_point()
@@ -48,12 +48,19 @@ ggplot(birthwt, aes(factor(race),bwt)) + geom_boxplot()
 # ?? myplot <- ggplot
 # ?? summary(myplot)
 
+#facet
 ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
   geom_point(size = 3) +
   facet_grid(Species ~ .)
 
+#scales
+library(RColorBrewer)
+display.brewer.all()
 
-
+df <- melt(iris, id.vars ="Species")
+ggplot(df, aes(Species, value, fill = variable)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_brewer(palette = "Set1")
 
 
 
